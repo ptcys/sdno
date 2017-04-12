@@ -1,0 +1,12 @@
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/mongoClient/M.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/mongoClient/Application.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/repository/DpRepository.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/orchestrator/Application.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/resource/Dp.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/orchestrator/controller/GreetingController.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/mongoClient/MongoAutoConfiguration.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/resource/Greeting.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/mongoClient/MongoProperties.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/service/DpInventoryService.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/orchestrator/controller/DpController.java
+/home/chen/workspace/sdn-orchestrator/src/main/java/com/bnrc/sdn/mongoClient/MongoDataAutoConfiguration.java

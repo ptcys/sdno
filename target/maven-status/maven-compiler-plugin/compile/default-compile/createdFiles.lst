@@ -1,0 +1,9 @@
+com/bnrc/sdn/orchestrator/controller/GreetingController.class
+com/bnrc/sdn/mongoClient/MongoDataAutoConfiguration.class
+com/bnrc/sdn/mongoClient/MongoDataAutoConfiguration$GridFsMongoDbFactory.class
+com/bnrc/sdn/mongoClient/MongoProperties.class
+com/bnrc/sdn/mongoClient/Application.class
+com/bnrc/sdn/mongoClient/M.class
+com/bnrc/sdn/resource/Greeting.class
+com/bnrc/sdn/resource/Dp.class
+com/bnrc/sdn/mongoClient/MongoAutoConfiguration.class
