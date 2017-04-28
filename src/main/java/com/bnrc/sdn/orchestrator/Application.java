@@ -3,12 +3,14 @@ package com.bnrc.sdn.orchestrator;
 
 import java.util.List;
 
+import com.bnrc.sdn.util.SpringContextUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -26,20 +28,26 @@ import com.bnrc.sdn.service.odl.SubscriptionService;
 
 
 @Configuration  
-@ComponentScan(basePackages={"com.bnrc.sdn.config","com.bnrc.sdn.orchestrator"})  
+@ComponentScan(basePackages={"com.bnrc.sdn.orchestrator"})
 @EnableAutoConfiguration  
-@EnableConfigurationProperties({MongoAutoConfiguration.class,MongoDataAutoConfiguration.class,SubscriptionService.class})  //!!
+@EnableConfigurationProperties({MongoAutoConfiguration.class,MongoDataAutoConfiguration.class,OdlProperties.class})  //!!
+
 @SpringBootApplication
 
-public class Application implements CommandLineRunner{
+public class Application {//implements CommandLineRunner{
 
-	@Autowired
-	private SubscriptionService subscriptionService;
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        ApplicationContext applicationContext =  SpringApplication.run(Application.class, args);
+        SpringContextUtil.setApplicationContext(applicationContext);
+
+        SubscriptionService subscriptionService = new SubscriptionService();
+        subscriptionService.topoSubscription();
+//        subscriptionService.test();
+
     }
     public void run(String... args) throws Exception {
-    	subscriptionService.topoSubscription();
+
+
     }
 }

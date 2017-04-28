@@ -67,12 +67,13 @@ import org.springframework.util.StringUtils;
 
 
 import com.bnrc.sdn.properties.MongoProperties;
+
 import com.mongodb.DB;  
 import com.mongodb.Mongo;  
-import com.mongodb.MongoClient;  
-  
-/** 
- * {@link EnableAutoConfiguration Auto-configuration} for Spring Data's mongo support. 
+import com.mongodb.MongoClient;
+
+/**
+ * {@link EnableAutoConfiguration Auto-configuration} for Spring Data's mongo support.
  * <p> 
  * Registers a {@link MongoTemplate} and {@link GridFsTemplate} beans if no other beans of 
  * the same type are configured. 
@@ -113,31 +114,34 @@ public class MongoDataAutoConfiguration implements BeanClassLoaderAware {
     	System.out.println(properties.getHost());
     	
     }
-    @Bean  
-//    @ConditionalOnMissingBean(MongoDbFactory.class)  
-    public SimpleMongoDbFactory mongoDbFactory( MongoClient mongo) throws Exception {  
-        String database = this.properties.getDatabase();  
+
+    @Bean
+//    @ConditionalOnMissingBean(MongoDbFactory.class)
+    public SimpleMongoDbFactory mongoDbFactory( MongoClient mongo) throws Exception {
+        String database = this.properties.getDatabase();
         SimpleMongoDbFactory simpleMongoDbFactory = null;
-//        System.out.println(mongo.getAddress());
+//        System.out.println("==========="+mongo.getAddress());
         try{
-        	simpleMongoDbFactory = new SimpleMongoDbFactory(mongo, database);  
+        	simpleMongoDbFactory = new SimpleMongoDbFactory(mongo, database);
         }catch(Exception e){
         	e.printStackTrace();
 //        	System.err.println("mongo is error");
         }
         return simpleMongoDbFactory;
-    }  
-  
-    @Bean  
-//  @ConditionalOnMissingBean  
+    }
+
+    @Bean(name="mongoTemplate")
+//  @ConditionalOnMissingBean
   public MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory) throws UnknownHostException {  
   	MongoTemplate mongoTemplate = null;
+//  	System.out.println("------------------------------"+mongoDbFactory.getDb().getName());
   	try{
   		mongoTemplate = new MongoTemplate(mongoDbFactory);  
   	}catch(Exception e){
   		e.printStackTrace();
 //  		System.err.println("mongo conncect failed");
   	}
+//  	System.out.println("+++++++++++++++++++++"+mongoTemplate.getDb().getName());
       return mongoTemplate;
   }  
     

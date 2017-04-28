@@ -45,7 +45,7 @@ public class UpdateHandler implements Runnable {
 	
 		DpidList = new ArrayList<String>();
 		this.updateURI = updateURI;
-		mongoTemplate = (MongoTemplate) SpringContextUtil.getBean("mongoTemplate");
+		mongoTemplate = (MongoTemplate) SpringContextUtil.getBeanById("mongoTemplate");
 		
 	}
 	
