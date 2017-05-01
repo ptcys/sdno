@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
+
+import com.bnrc.sdn.util.SpringContextUtil;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -34,13 +36,7 @@ import com.bnrc.sdn.properties.OdlProperties;
 import com.bnrc.sdn.util.SocketHandler;
 import com.mongodb.MongoClient;
 
-
-@Service
-@EnableConfigurationProperties({OdlProperties.class,MongoAutoConfiguration.class,MongoDataAutoConfiguration.class})  
-@ConfigurationProperties
-
 public class SubscriptionService {
-	@Autowired 
 	private OdlProperties odlProperties; 
 	
 //	@Autowired
@@ -49,8 +45,11 @@ public class SubscriptionService {
 	public void test(){
 		System.out.println(odlProperties.getAddress());
 	}
+	public SubscriptionService(){
+		odlProperties = (OdlProperties) SpringContextUtil.getBeanByClass(OdlProperties.class);
+	}
 	
-	public void topoSubscription()  {
+	public  void topoSubscription()  {
 
 		RestTemplate restTemplate = new RestTemplate();
 		restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -89,7 +88,7 @@ public class SubscriptionService {
 	    }
 	    
 	    try{
-	    	System.out.println(rsbody.getJSONObject("output").getString("stream-name").toString());
+	    	System.out.println("stream name:  "+rsbody.getJSONObject("output").getString("stream-name").toString());
 	    }catch(Exception e){
 	    	e.printStackTrace();
 	    }
@@ -119,7 +118,7 @@ public class SubscriptionService {
 		wsLocation = getresponse.getHeaders().getLocation();
 		
 		
-		System.out.println(wsLocation);
+		System.out.println("URI:  "+wsLocation);
 		
 		
 		WebSocketClient client = new JettyWebSocketClient();

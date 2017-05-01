@@ -65,7 +65,7 @@ public class MongoAutoConfiguration {
         }  
     }  
   
-    @Bean  
+    @Bean
 //    @ConditionalOnMissingBean  //????????????????
     public MongoClient mongo() {
     	try {
