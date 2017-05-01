@@ -130,7 +130,7 @@ public class MongoDataAutoConfiguration implements BeanClassLoaderAware {
         return simpleMongoDbFactory;
     }  
 
-    @Bean(name="mongoTemplate")
+//    @Bean(name="mongoTemplate")
 //  @ConditionalOnMissingBean
   public @Bean(name="mongoTemplate") MongoTemplate mongoTemplate(MongoDbFactory mongoDbFactory) throws UnknownHostException {  
   	MongoTemplate mongoTemplate = null;
