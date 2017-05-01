@@ -22,6 +22,7 @@ import com.bnrc.sdn.resource.Dp;
 import com.bnrc.sdn.resource.Greeting;
 import com.bnrc.sdn.service.DpInventoryService;
 import com.bnrc.sdn.service.odl.SubscriptionService;
+import com.bnrc.sdn.util.SpringContextUtil;
 
 
 
@@ -35,11 +36,16 @@ public class Application implements CommandLineRunner{
 
 	@Autowired
 	private SubscriptionService subscriptionService;
+	
+//	@Autowired
+	private MongoTemplate mongoTemplate;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
     public void run(String... args) throws Exception {
-    	subscriptionService.topoSubscription();
+//    	subscriptionService.topoSubscription();
+//    	System.out.println(mongoTemplate.getDb());
+    	System.out.println(SpringContextUtil.getApplicationContext());
     }
 }

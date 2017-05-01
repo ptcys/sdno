@@ -50,10 +50,4 @@ public class DpController {
 //		return dpInventoryService.findByDpIdAndIp(dpId, ip);
 //	}
 	
-	
-	@RequestMapping(value = "/register" , method = RequestMethod.GET)
-	public void Register(@RequestParam){
-		
-	
-	}
 }

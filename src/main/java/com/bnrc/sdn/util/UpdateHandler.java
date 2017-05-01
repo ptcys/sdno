@@ -24,6 +24,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 
+
+import com.bnrc.sdn.resource.DpInventory;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClientURI;
 import com.mongodb.MongoException;
@@ -88,7 +90,7 @@ public class UpdateHandler implements Runnable {
 		
 	}
 	
-	public  void updateTopo(JSONObject rsbody){
+	public void updateTopo(JSONObject rsbody){
 		
 		
 		System.out.println(rsbody);
@@ -118,66 +120,54 @@ public class UpdateHandler implements Runnable {
 	
 	public void updateInventory(JSONObject rsbody){
 		
-//		List<DpInventory> DpList = new ArrayList<DpInventory>();
-//		JSONArray InventoryArray = new JSONArray();
-//		String NodeId;
-//		try {
-//			InventoryArray = rsbody.getJSONObject("network-topology").getJSONArray("topology").getJSONObject(0).getJSONArray("node");
-//		} catch (JSONException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-//		
-//		//System.out.println(InventoryArray.length());
-//		for(int i=0;i<InventoryArray.length();i++)
-//		{
-//			NodeId = InventoryArray.getJSONObject(i).getString("node-id");
-//			if(!DpidList.contains(NodeId))
-//			{
-//				DpidList.add(NodeId);
-//				DpInventory tempDp = new DpInventory();
-//				tempDp.setDpId(Integer.parseInt(NodeId.substring(9)));
-//				DpList.add(tempDp);
-//				
-//			}
-//			
-//		}
-//		System.out.println(DpidList);
-//		//System.out.println(DpList);
-//		
-//		for (DpInventory dpInventory : DpList) {
-//			
-//			String uri =updateURI+"/restconf/operational/opendaylight-inventory:nodes/node/openflow:"+ dpInventory.getDpId()+"/flow-node-inventory:switch-features";
-//			JSONObject table = new JSONObject();
-//			Integer tableSize;
-//			table = doUpdate(uri);
-//			try{
-//			tableSize = (Integer)table.getJSONObject("flow-node-inventory:switch-features").get("max_tables");
-//		
-//			dpInventory.setTableSize(tableSize);
-//			}
-//			catch(Exception e)
-//			{
-//				e.printStackTrace();
-//			}
-//			
-//		}
-//		
-//		System.out.println(DpList);
-//		if(DpList.size()>0)
-//		{
-//		
-//	
-//			try {
-//				mongoTemplate.insertAll(DpList);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//	
-//			
-//	
-//		}
+		List<DpInventory> DpList = new ArrayList<DpInventory>();
+		JSONArray InventoryArray = new JSONArray();
+		String NodeId;
+		try {
+			InventoryArray = rsbody.getJSONObject("network-topology").getJSONArray("topology").getJSONObject(0).getJSONArray("node");
+		} catch (JSONException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		//System.out.println(InventoryArray.length());
+		for(int i=0;i<InventoryArray.length();i++)
+		{
+			try{
+				NodeId = InventoryArray.getJSONObject(i).getString("node-id");
+			
+				if(!DpidList.contains(NodeId))
+				{
+					DpidList.add(NodeId);
+					DpInventory tempDp = new DpInventory();
+					tempDp.setDpId(Integer.parseInt(NodeId.substring(9)));
+					DpList.add(tempDp);
+				
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
+		System.out.println(DpidList);
+		//System.out.println(DpList);
+		
+		
+		System.out.println(DpList);
+		if(DpList.size()>0)
+		{
+		
+	
+			try {
+				mongoTemplate.insertAll(DpList);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	
+			
+	
+		}
 		
 	
 	}

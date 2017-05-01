@@ -5,13 +5,15 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,6 +27,8 @@ import org.springframework.web.socket.client.WebSocketClient;
 import org.springframework.web.socket.client.WebSocketConnectionManager;
 import org.springframework.web.socket.client.jetty.JettyWebSocketClient;
 
+import com.bnrc.sdn.mongoClient.MongoAutoConfiguration;
+import com.bnrc.sdn.mongoClient.MongoDataAutoConfiguration;
 import com.bnrc.sdn.properties.MongoProperties;
 import com.bnrc.sdn.properties.OdlProperties;
 import com.bnrc.sdn.util.SocketHandler;
@@ -32,11 +36,15 @@ import com.mongodb.MongoClient;
 
 
 @Service
-@EnableConfigurationProperties(OdlProperties.class)  
+@EnableConfigurationProperties({OdlProperties.class,MongoAutoConfiguration.class,MongoDataAutoConfiguration.class})  
 @ConfigurationProperties
+
 public class SubscriptionService {
 	@Autowired 
 	private OdlProperties odlProperties; 
+	
+//	@Autowired
+//	private MongoTemplate mongoTemplate;
 	
 	public void test(){
 		System.out.println(odlProperties.getAddress());
