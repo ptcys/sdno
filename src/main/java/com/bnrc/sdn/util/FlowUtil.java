@@ -67,7 +67,8 @@ public class FlowUtil {
         try {
         	
         	//!!改
-            String str = HttpRequest.sendPut(url + "/controller/nb/v2/flowprogrammer/"  + "/node/OF/" + flow.getNode().getId() + "/staticFlow/" + flow.getName(),headers,json);
+            String str = flow.getFlow();
+//            String str = HttpRequest.sendPut(url + "/controller/nb/v2/flowprogrammer/"  + "/node/OF/" + flow.getNode().getId() + "/staticFlow/" + flow.getName(),headers,json);
             System.out.println(str);
             return str;
         }catch (Exception e){

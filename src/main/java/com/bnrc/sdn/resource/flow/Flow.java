@@ -206,3 +206,51 @@ public class Flow {
         this.tpDst = tpDst;
     }
 }
+
+//public class Flow{
+//
+//    private String flow = "{\n" +
+//            "\"flow\": [\n" +
+//            "{\n" +
+//            "\"id\": \"1\"，\n" +
+//            "\"match\": {\n" +
+//            "\"ethernet-match\": {\n" +
+//            "\"ethernet-type\": {\n" +
+//            "\"type\": \"0x0800\"\n" +
+//            "}\n" +
+//            "}，\n" +
+//            "\"ipv4-destination\": \"10.0.0.1/24\"\n" +
+//            "}，\n" +
+//            "\"instructions\": {\n" +
+//            "\"instruction\": [\n" +
+//            "{\n" +
+//            "\"apply-actions\": {\n" +
+//            "\"action\": [\n" +
+//            "{\n" +
+//            "\"dec-nw-ttl\": {}，\n" +
+//            "\"order\": \"0\"\n" +
+//            "}\n" +
+//            "]\n" +
+//            "}，\n" +
+//            "\"order\": \"0\"\n" +
+//            "}\n" +
+//            "]\n" +
+//            "}，\n" +
+//            "\"flow-name\": \"lihao\"，\n" +
+//            "\"priority\": \"1\"，\n" +
+//            "\"idle-timeout\": \"20\"，\n" +
+//            "\"hard-timeout\": \"20\"，\n" +
+//            "\"cookie\": \"1\"，\n" +
+//            "\"table_id\": \"0\"\n" +
+//            "}\n" +
+//            "]\n" +
+//            "}";
+//    public String getFlow() {
+//        return this.flow;
+//    }
+//
+//    public void setFlow(String flow) {
+//        this.flow = flow;
+//    }
+//
+//}
