@@ -23,7 +23,7 @@ public class SocketHandler implements WebSocketHandler {
 	
 	public SocketHandler(String updateURI) {
 	 super();
-	 System.out.println(updateURI);
+//	 System.out.println(updateURI);
 	 updateHandler = new UpdateHandler(updateURI);
 
 	 this.updateURI = updateURI;

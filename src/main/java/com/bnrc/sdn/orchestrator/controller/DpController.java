@@ -31,7 +31,7 @@ public class DpController {
 	
 	@RequestMapping(value = "/all" , method = RequestMethod.GET)
 	public List<Dp> getAllDp(){
-		logger.info("getAll");
+		logger.info("Dp getAll");
 		return dpInventoryService.findAll();
 	}
 	

@@ -126,6 +126,7 @@ public class SubscriptionService {
 		
 		SocketHandler handler = new SocketHandler("http://"+odlProperties.getAddress()+":"+ odlProperties.getPort());
 		  WebSocketConnectionManager cManager = new WebSocketConnectionManager(client, handler, wsLocation.toString());
+		  cManager.start();
 	}
 	
 	
